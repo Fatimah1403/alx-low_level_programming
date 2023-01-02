@@ -22,7 +22,7 @@ char *_strchr(char *s, char c)
 	{
 		if (c == s[j])
 		{
-			s++;
+			s += b;
 
 			return (s);
 		}
