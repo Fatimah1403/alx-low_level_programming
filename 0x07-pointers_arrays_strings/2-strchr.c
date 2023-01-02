@@ -11,7 +11,7 @@
  */
 char *_strchr(char *s, char c)
 {
-	unsigned int i, j;
+	unsigned int i = 0, j;
 
 	while (s[i])
 	{
@@ -22,7 +22,7 @@ char *_strchr(char *s, char c)
 	{
 		if (c == s[j])
 		{
-			s += b;
+			s += j;
 
 			return (s);
 		}
