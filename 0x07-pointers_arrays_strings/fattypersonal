@@ -1,0 +1,10 @@
+/**
+Task 9 solution
+*/
+
+Vi the file
+type the password : abc123
+ESC
+:set binary noeol
+ESC
+:wq
