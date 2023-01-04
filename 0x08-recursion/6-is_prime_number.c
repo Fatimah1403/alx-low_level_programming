@@ -27,7 +27,7 @@ int check_prime(int n, int m)
 {
 	if (m < 2 || m % n)
 		return (0);
-	else if (n > b / 2)
+	else if (n > m / 2)
 		return (1);
 	else
 		return (check_prime(n + 1, m));
