@@ -10,7 +10,7 @@
   */
 int check_prime(int n, int m)
 {
-	if (m < 2 || m % n)
+	if (m < 2 || m % n == 0)
 		return (0);
 	else if (n > m / 2)
 		return (1);
