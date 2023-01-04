@@ -32,14 +32,15 @@ int check_sqrt(int a, int b)
  */
 int _sqrt_recursion(int n)
 {
-	int a = 0;
+	if (n == 0)
+		return (0);
 
-	if (n < 0)
+	else if (n < 0)
 		return (-1);
 
-	if (n == 1)
+	else if (n == 1)
 		return (1);
 
-	return (check_sqrt(n, a));
+		return (check_sqrt(n, 1));
 
 }
