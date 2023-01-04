@@ -15,7 +15,7 @@ int check_prime(int n, int m)
 	else if (n > m / 2)
 		return (1);
 	else
-		return (check_prime(n, m + 1));
+		return (check_prime(n + 1, m));
 }
 
 
