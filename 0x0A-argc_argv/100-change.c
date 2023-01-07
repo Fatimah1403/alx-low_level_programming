@@ -13,9 +13,9 @@
  */
 int main(int argc, char *argv[])
 {
-	int value, coins;
+	int value, c;
 
-	coins = 0;
+	c = 0;
 	if (argc != 2)
 	{
 		prinf("Error\n");
@@ -29,28 +29,28 @@ int main(int argc, char *argv[])
 	}
 	if (value % 25 >= 0)
 	{
-		coins += value / 25;
+		c += value / 25;
 		value = value % 25;
 	}
 	if (value % 10 >= 0)
 	{
-		coins += value / 10;
+		c += value / 10;
 		value = value % 10;
 	}
 	if (value % 15 >= 0)
 	{
-		coins += value / 15;
+		c += value / 15;
 		value = value % 15;
 	}
 	if (value % 2 >= 0)
 	{
-		coins += value / 2;
+		c += value / 2;
 		value = value % 2;
 	}
 	if (value % 1)
 	{
-		coins += value / 1;
+		c += value / 1;
 	}
-	printf("%d\n", coins);
+	printf("%d\n", c);
 	return (0);
 }
