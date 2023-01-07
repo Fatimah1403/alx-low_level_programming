@@ -1,57 +1,53 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
+
 /**
- * main - a program that prints
- * the minimum number of coins to make change for an amount of money
+ * main - Prints the minimum number of coins to
+ * make change for an amount of money.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
  *
- * @argc: argument count/ first argument
- * @argv: argument vector/ second argument
- *
- * Return: Always 0 (success)
+ * Return: If the number of arguments is not exactly one - 1.
+ * Otherwise - 0.
  */
 int main(int argc, char *argv[])
 {
-	int value, c;
+	int cents, coins = 0;
 
-	c = 0;
 	if (argc != 2)
 	{
-		prinf("Error\n");
+		printf("Error\n");
 		return (1);
 	}
-	value = atoi(argv[1]);
-	if (value < 0)
+
+	cents = atoi(argv[1]);
+
+	while (cents > 0)
 	{
-		printf("%d\n", 0);
-		return (0);
+		coins++;
+		if ((cents - 25) >= 0)
+		{
+			cents -= 25;
+			continue;
+		}
+		if ((cents - 10) >= 0)
+		{
+			cents -= 10;
+			continue;
+		}
+		if ((cents - 5) >= 0)
+		{
+			cents -= 5;
+			continue;
+		}
+		if ((cents - 2) >= 0)
+		{
+			cents -= 2;
+			continue;
+		}
+		cents--;
 	}
-	if (value % 25 >= 0)
-	{
-		c += value / 25;
-		value = value % 25;
-	}
-	if (value % 10 >= 0)
-	{
-		c += value / 10;
-		value = value % 10;
-	}
-	if (value % 15 >= 0)
-	{
-		c += value / 15;
-		value = value % 15;
-	}
-	if (value % 2 >= 0)
-	{
-		c += value / 2;
-		value = value % 2;
-	}
-	if (value % 1 >= 0)
-	{
-		c += value / 1;
-	}
-	printf("%d\n", c);
+
+	printf("%d\n", coins);
+
 	return (0);
-}
