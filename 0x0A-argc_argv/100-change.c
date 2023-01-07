@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 		c += value / 2;
 		value = value % 2;
 	}
-	if (value % 1)
+	if (value % 1 >= 0)
 	{
 		c += value / 1;
 	}
