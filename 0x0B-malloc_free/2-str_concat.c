@@ -43,12 +43,12 @@ char *str_concat(char *s1, char *s2)
 			p[k] = s1[k];
 
 		if (k >= i)
+		{
 			p[k] = s2[j];
 			j++;
-
+		}
 		k++;
 	}
 	p[k] = '\0';
 	return (p);
-
 }
