@@ -23,10 +23,10 @@ char *str_concat(char *s1, char *s2)
 	if (s2 == NULL)
 		s2 = "";
 
-	while (s[i])
+	while (p[i])
 		i++;
 
-	while (s[j])
+	while (p[j])
 		j++;
 
 	l = i + j;
