@@ -7,7 +7,7 @@
  * @s: string to count
  *
  * Return: int of number of words
- */i
+ */
 int wordcnt(char *s)
 {
 	int i, n = 0;
@@ -38,11 +38,11 @@ char **strtow(char *str)
 	int i, j, k, l, n = 0, m = 0;
 	char **a;
 
-	if (str == NULL || str == '\0')
+	if (str == NULL || *str == '\0')
 		return (NULL);
 	n = wordcnt(str);
 	if (n == 1)
-		return (Null);
+		return (NULL);
 	a = (char **)malloc(n * sizeof(char *));
 	if (a == NULL)
 		return (NULL);
