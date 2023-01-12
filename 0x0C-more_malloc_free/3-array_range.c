@@ -12,18 +12,18 @@
  */
 int *array_range(int min, int max)
 {
-	int i, a;
-	int *p;
+	int i, l;
+	int *a;
 
 	if (min > max)
 		return (NULL);
-	a = max - min;
-	p = malloc(sizeof(int) * (a + 1));
-	if (p == NULL)
+	l = max - min + 1;
+	a = malloc(sizeof(int) * l);
+	if (a == NULL)
 		return (NULL);
-	for (i = 0; i < a; min++; i++)
+	for (i = 0; i < l; i++, min++)
 	{
-		p[i] = min;
+		a[i] = min;
 	}
-	return (p);
+	return (a);
 }
