@@ -21,12 +21,9 @@ int *array_range(int min, int max)
 	p = malloc(sizeof(int) * a);
 	if (p == NULL)
 		return (NULL);
-
 	for (i = 0; i < a; i++; min++)
 	{
 		p[i] = min;
 	}
 	return (p);
-
-
 }
