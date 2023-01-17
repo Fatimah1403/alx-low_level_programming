@@ -1,16 +1,13 @@
 #include <stdio.h>
 
 /**
- * main - Entry point.
- *
- * @argc: nos of arguments passed
- * @argv: pointer arrays which point to the arguments
+ * main - Prints the file name of the program.
  *
  * Return: Always (0)
  */
-int main(int argc, char *argv[])
+int main(void)
 {
-	printf("%s\n", argv[0]);
+	printf("%s\n", __FILE__);
 
 	return (0);
 }
