@@ -3,16 +3,16 @@
 #include <stdlib.h>
 
 /**
- * main - ....
- * @argc: ....
- * @argv: ...
+ * main -  performs simple operations
+ * @argc:  number of arguments passed
+ * @argv: array of pointers to arguments
  *
  * Return: Always (0)
  */
 int main(int argc, char *argv[])
 {
-	int num1, num2;
-	char *opr;
+	int num1, num2, c;
+	int (*opr)(int, int);
 
 	if (argc != 4)
 	{
@@ -21,22 +21,16 @@ int main(int argc, char *argv[])
 	}
 
 	num1 = atoi(argv[1]);
-	opr = argv[2];
+	opr = get_op_func(argv[2]);
 	num2 = atoi(argv[3]);
 
-	if (get_op_func(op) == NULL || opr[1] != '\0')
+	if (opr == NULL)
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	if ((*opr == '/' && num2 == 0) ||
-			(*opr == '%' && num2 == 0))
-	{
-		printf("Error\n");
-		exit(100);
-
-	}
-	printf("%d\n", get_op_func, (num1, num2));
+	c = opr(num1, num2);
+	printf("%d\n", c);
 
 	return (0);
 }
