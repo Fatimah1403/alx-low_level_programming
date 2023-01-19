@@ -71,7 +71,7 @@ void print_float(va_list f)
 void print_all(const char * const format, ...)
 {
 	va_list anythg;
-	unsigned int i = 0, j = 0;
+	unsigned int i, j;
 	char *separator = "";
 	print_t funcs[] = {
 		{"c", print_char},
@@ -82,6 +82,7 @@ void print_all(const char * const format, ...)
 
 
 	va_start(anythg, format);
+	i = 0;
 
 	while (format && format[i])
 	{
