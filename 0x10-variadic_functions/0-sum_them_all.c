@@ -6,6 +6,7 @@
  * sum_them_all - a function that returns the sum of all its parameters.
  *
  * @n: integer to return
+ * @...: A variable number of paramters to calculate the sum of
  *
  * Return: the pointer to be used
  */
