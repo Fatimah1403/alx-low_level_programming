@@ -1,4 +1,3 @@
-#include <varargs.h>
 #include "variadic_functions.h"
 #include <stdarg.h>
 #include <stdio.h>
@@ -8,6 +7,7 @@
  * print_char - Prints a char.
  * @c: A list of arguments pointing to
  *       the character to be printed.
+ * Return: void
  */
 void print_char(va_list, c)
 {
@@ -20,6 +20,8 @@ void print_char(va_list, c)
  * print_int - Prints an int.
  * @i: A list of arguments pointing to
  *       the integer to be printed.
+ * Return: void
+ *
  */
 void print_int(va_list i)
 {
@@ -31,7 +33,8 @@ void print_int(va_list i)
 /**
  * print_string - Prints a string.
  * @s: A list of arguments pointing to
- *       the integer to be printed.
+ *
+ * Return: void
  */
 void print_string(va_list s)
 {
@@ -50,6 +53,8 @@ void print_string(va_list s)
  * print_float - Prints a float.
  * @f: A list of arguments pointing to
  *       the float to be printed.
+ * Return: void
+
  */
 void print_float(va_list f)
 {
@@ -70,38 +75,37 @@ void print_float(va_list f)
  */
 void print_all(const char * const format, ...)
 {
-	va_list anythg;
-	unsigned int i, j;
+	va_list args;
+	int i = 0, j = 0;
 	char *separator = "";
-	print_t funcs[] = {
+	printer_t funcs[] = {
 		{"c", print_char},
 		{"i", print_int},
 		{"f", print_float},
 		{"s", print_string}
 	};
 
+	va_start(args, format);
 
-	va_start(anythg, format);
-	i = 0;
-
-	while (format && format[i])
+	while (format && (*(format + i)))
 	{
 		j = 0;
-		while (funcs[j].t != NULL)
-		{
-			if (*(funcs[j].t) == format[i])
-			{
-				printf("%s", separator);
-				funcs[j].f(anythg);
-				separator = ", ";
-				break;
-			}
-			j++;
-		}
-		i++;
 
-		printf("\n");
-		va_end(anythg);
+		while (j < 4 && (*(format + i) != *(funcs[j].symbol)))
+			j++;
+
+		if (j < 4)
+		{
+			printf("%s", separator);
+			funcs[j].print(args);
+			separator = ", ";
+		}
+
+		i++;
 	}
 
+	printf("\n");
+
+	va_end(args);
 }
+
