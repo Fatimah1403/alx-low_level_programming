@@ -1,57 +1,62 @@
 #include "variadic_functions.h"
-#include <stdarg.h>
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdarg.h>
+
+void print_char(va_list arg);
+void print_int(va_list arg);
+void print_float(va_list arg);
+void print_string(va_list arg);
+void print_all(const char * const format, ...);
 
 /**
  * print_char - Prints a char.
- * @c: A list of arguments pointing to
+ * @arg: A list of arguments pointing to
  *       the character to be printed.
  */
-void print_char(va_list c)
+void print_char(va_list arg)
 {
-	char character;
+	char letter;
 
-	character = va_arg(c, int);
-	printf("%c", character);
+	letter = va_arg(arg, int);
+	printf("%c", letter);
 }
 
 /**
  * print_int - Prints an int.
- * @i: A list of arguments pointing to
+ * @arg: A list of arguments pointing to
  *       the integer to be printed.
  */
-void print_int(va_list i)
+void print_int(va_list arg)
 {
 	int num;
 
-	num = va_arg(i, int);
+	num = va_arg(arg, int);
 	printf("%d", num);
 }
 
 /**
  * print_float - Prints a float.
- * @f: A list of arguments pointing to
+ * @arg: A list of arguments pointing to
  *       the float to be printed.
  */
-void print_float(va_list f)
+void print_float(va_list arg)
 {
 	float num;
 
-	num = va_arg(f, double);
+	num = va_arg(arg, double);
 	printf("%f", num);
 }
 
 /**
  * print_string - Prints a string.
- * @s: A list of arguments pointing to
+ * @arg: A list of arguments pointing to
  *       the string to be printed.
  */
-void print_string(va_list s)
+void print_string(va_list arg)
 {
 	char *str;
 
-	str = va_arg(s, char *);
+	str = va_arg(arg, char *);
 
 	if (str == NULL)
 	{
@@ -73,7 +78,7 @@ void print_string(va_list s)
  */
 void print_all(const char * const format, ...)
 {
-	va_list anything;
+	va_list args;
 	int i = 0, j = 0;
 	char *separator = "";
 	printer_t funcs[] = {
@@ -83,7 +88,7 @@ void print_all(const char * const format, ...)
 		{"s", print_string}
 	};
 
-	va_start(anything, format);
+	va_start(args, format);
 
 	while (format && (*(format + i)))
 	{
@@ -95,7 +100,7 @@ void print_all(const char * const format, ...)
 		if (j < 4)
 		{
 			printf("%s", separator);
-			funcs[j].print(anything);
+			funcs[j].print(args);
 			separator = ", ";
 		}
 
@@ -104,5 +109,5 @@ void print_all(const char * const format, ...)
 
 	printf("\n");
 
-	va_end(anything);
+	va_end(args);
 }
