@@ -2,14 +2,14 @@
 #define LISTS_H
 
 /**
- * struct list_s - singly linked list
+ * struct listint_s - singly linked list
  * @n: integer
  * @next: points to the next node
  *
  * Description: singly linked list node structure
  * for Holberton project
  */
-typeof struct listnt_s
+typeof struct listint_s
 {
 	int n;
 	struct listint_s *next;
