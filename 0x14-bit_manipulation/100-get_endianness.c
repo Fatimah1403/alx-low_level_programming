@@ -14,9 +14,9 @@ int get_endianness(void)
 	char *c = (char *)&i;
 
 	if (*c)
-		printf("Little endian\n");
+		printf("Little endian\n", c);
 	else
-		printf("Big endian\n");
+		printf("Big endian\n", c);
 
 	return (0);
 }
