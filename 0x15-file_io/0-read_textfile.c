@@ -8,7 +8,7 @@
   * and prints it to the POSIX standard output
   *
   * @filename: The file name to be printed
-  * @letters: Numbers of letters to be read.
+  * @letters: Numbers of letter to be read.
   *
   * Return: Always (0)
   */
