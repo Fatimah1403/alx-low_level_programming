@@ -57,12 +57,6 @@ typedef struct shash_node_s
 	struct shash_node_s *next;
 	struct shash_node_s *sprev;
 	struct shash_node_s *snext;
-
-	char *key;
-	char *value;
-	struct shash_node_s *next;
-	struct shash_node_s *sprev;
-	struct shash_node_s *snext;
 } shash_node_t;
 
 /**
@@ -77,11 +71,6 @@ typedef struct shash_node_s
  */
 typedef struct shash_table_s
 {
-
-	unsigned long int size;
-	shash_node_t **array;
-	shash_node_t *shead;
-	shash_node_t *stail;
 
 	unsigned long int size;
 	shash_node_t **array;
