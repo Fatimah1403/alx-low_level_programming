@@ -32,15 +32,15 @@ size_t min(size_t a, size_t b)
  */
 int jump_search(int *array, size_t size, int value)
 {
-	size_t low, high, jump;
+	size_t low, high, step;
 
 	if (!array || size == 0)
 		return (-1);
 
-	jump = sqrt(size);
+	step = sqrt(size);
 
 	for (high = 0; high < size && array[high] < value;
-	     low = high, high += jump)
+	     low = high, high += step)
 	{
 		printf("Value checked array[%lu] = [%d]\n",
 		       high, array[high]);
