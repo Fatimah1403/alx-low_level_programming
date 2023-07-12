@@ -1,6 +1,7 @@
 #include "search_algos.h"
 
 size_t min(size_t a, size_t b);
+int jump_search(int *array, size_t size, int value);
 
 /**
  * min - returns the minimum of two size_t values
