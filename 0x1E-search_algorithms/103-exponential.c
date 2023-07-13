@@ -20,7 +20,7 @@ size_t min(size_t a, size_t b)
 		return (b);
 }
 /**
- * b_search - searches for a value in an integer array using a
+ * binary_search_helper - searches for a value in an integer array using a
  * binary search algorithm, not guaranteed to return lowest index if `value`
  * appears twice in `array` (modified from `binary_search`)
  * @array: pointer to first element of array to seach
@@ -31,7 +31,8 @@ size_t min(size_t a, size_t b)
  * Return: index containing `value`, or -1 if `value` not found or
  * `array` is NULL
  */
-int b_search(int *array, int value,
+
+int binary_search_helper(int *array, int value,
 			 size_t low, size_t high)
 {
 	size_t mid, i;
@@ -69,21 +70,21 @@ int b_search(int *array, int value,
 
 int exponential_search(int *array, size_t size, int value)
 {
-	size_t low, high, index = 1;
+	size_t low, high, bound = 1;
 
 	if (!array || size == 0)
 		return (-1);
 
-	while (index < size && array[index] < value)
+	while (bound < size && array[bound] < value)
 	{
 		printf("Value checked array[%lu] = [%d]\n",
-		       index, array[index]);
+		       bound, array[bound]);
 		bound *= 2;
 	}
 
-	low = index / 2;
-	high = min(index, size - 1);
-
+	low = bound / 2;
+	high = min(bound, size - 1);
+	/* 'found' message generated even if array[high] < value */
 	printf("Value found between indexes [%lu] and [%lu]\n", low, high);
-	return (b_search(array, value, low, high));
+	return (binary_search_helper(array, value, low, high));
 }
