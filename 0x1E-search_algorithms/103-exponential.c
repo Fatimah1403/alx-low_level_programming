@@ -19,22 +19,21 @@ size_t min(size_t a, size_t b)
 	else
 		return (b);
 }
-
 /**
- * b_search - function that searches for a value in a sorted
- * array of integers using the Binary search algorithm
+ * b_search - searches for a value in an integer array using a
+ * binary search algorithm, not guaranteed to return lowest index if `value`
+ * appears twice in `array` (modified from `binary_search`)
+ * @array: pointer to first element of array to seach
+ * @value: value to search for
+ * @low: starting index
+ * @high: ending index
  *
- * @array: Array is a pointer to the first element of the array to search in
- * @low: Left index in the array
- * @high: right index in the array
- * @value: Value to search for in the array
- *
- * Return: The first index where value is located
- * or -1 if value is not found or if array is NULL
+ * Return: index containing `value`, or -1 if `value` not found or
+ * `array` is NULL
  */
-int b_search(int *array, size_t low, size_t high, int value)
+int b_search(int *array, int value,
+			 size_t low, size_t high)
 {
-	size_t low, high;
 	size_t mid, i;
 
 	if (!array)
@@ -51,26 +50,26 @@ int b_search(int *array, size_t low, size_t high, int value)
 		else if (array[mid] > value)
 			high = mid - 1;
 		else
-			return (mid);
+			return ((int)mid);
 	}
-	return (-1);
 
+	return (-1);
 }
 
 /**
- * exponential_search -  function that searches for a value in a
- * sorted array of integers using the exponential_search algorithm
+ * exponential_search - searches for a value in a sorted array of integers
+ * using an exponential search algorithm
+ * @array: pointer to first element of array to search
+ * @size: number of elements in array
+ * @value: value to search for
  *
- * @array: Array is a pointer to the first element of the array to search in
- * @size: Number of elements in array
- * @value: Value to search for in the array
- *
- * Return: The first index where value is located
- * or -1 if value is not found or if array is NULL
+ * Return: first index containing `value`, or -1 if `value` not found or
+ * `array` is NULL
  */
+
 int exponential_search(int *array, size_t size, int value)
 {
-	size_t low, high, index;
+	size_t low, high, index = 1;
 
 	if (!array || size == 0)
 		return (-1);
@@ -79,11 +78,12 @@ int exponential_search(int *array, size_t size, int value)
 	{
 		printf("Value checked array[%lu] = [%d]\n",
 		       index, array[index]);
-		index *= 2;
+		bound *= 2;
 	}
+
 	low = index / 2;
 	high = min(index, size - 1);
+
 	printf("Value found between indexes [%lu] and [%lu]\n", low, high);
 	return (b_search(array, value, low, high));
-
 }
